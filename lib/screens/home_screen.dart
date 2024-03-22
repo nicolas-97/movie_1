@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movie_2/widgets/card_swipper.dart';
+import 'package:movie_2/widgets/movie_slider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,17 +9,20 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Movie app'),
-        
+        title: Text('Peliculas en cartelera'),
+        actions: [
+          IconButton(
+            onPressed: (){},
+            icon: Icon(Icons.search),
+          )
+        ],
       ),
-      body: Center(
-        child: IconButton(
-          icon: Icon(Icons.arrow_right_rounded, size: 200,),
-          onPressed: () {
-            Navigator.pushNamed(context, '/details');
-          },
-        )
-      ),
+      body: SingleChildScrollView(
+        child: Column(children: [
+          CardSwipper(),
+          MovieSlider()
+        ],),
+      )
     );
   }
 }

@@ -10,8 +10,12 @@ class DetailsMovieScreen extends StatelessWidget {
         title: Text('Detalles pelicula'),
       ),
       body: Center(
-        child: Text("Panta de details"),
+        child: TextButton(
+          child: Text("Regresar", style: TextStyle(fontSize: 30),),
+          onPressed: () {
+            Navigator.pop(context);
+          },
       ),
-    );
+    ));
   }
 }
