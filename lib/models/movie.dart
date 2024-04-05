@@ -64,4 +64,7 @@ class Movie {
         "vote_average": voteAverage,
         "vote_count": voteCount,
     };
+
+
+    String getPosterPath({int size = 500}) => 'https://image.tmdb.org/t/p/w${size}${this.posterPath!}';
 }

@@ -1,9 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:movie_2/models/movie.dart';
 
 class MovieSlider extends StatelessWidget {
-  const MovieSlider({super.key});
+
+  final List<Movie> movies;
+
+  const MovieSlider({
+      super.key,
+      required this.movies
+    });
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +24,10 @@ class MovieSlider extends StatelessWidget {
           SizedBox(height: 3,),
           Expanded(
             child: ListView.builder(
-              itemCount: 10,
+              itemCount: movies.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
+                final movie = movies[index];
                 return Container(
                   width:  130,
                   height: 190,
@@ -30,14 +38,14 @@ class MovieSlider extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                         child: FadeInImage(
                           placeholder: AssetImage('images/no-image.jpg'),
-                          image: NetworkImage("https://via.placeholder.com/300x400"),
+                          image: NetworkImage(movie.getPosterPath()),
                           height: 190,
                           width: 130,
                           fit: BoxFit.cover,
                         ),
                       ),
                       SizedBox(height: 5,),
-                      Text("Un Fatto Di Sangue Nel Comune Di Siculiana Fra Due Uomini Per Causa Di Una Vedova. Si Sospettano Moventi Politici. Amore-Morte-Shimmy",
+                      Text(movie.title!,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
                         textAlign: TextAlign.center,
